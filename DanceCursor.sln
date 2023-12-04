@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DanceCursor.Client", "DanceCursor.Client\DanceCursor.Client.csproj", "{CD064F6A-83D5-4927-9AD1-83C809BE7B17}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\UI\DanceCursor.Client", "src\UI\DanceCursor.Client\DanceCursor.Client.csproj", "{CD064F6A-83D5-4927-9AD1-83C809BE7B17}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8038AF89-7B77-4B5D-A483-D64F0491C4FB}"
 EndProject
