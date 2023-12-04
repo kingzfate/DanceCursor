@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <RadioButton x:Name="qwe" HorizontalAlignment="Left" Margin="38,27,0,0" VerticalAlignment="Top" Content="Движение мышью&#xD;&#xA;" Height="20"/>
+        <RadioButton Content="Умное движение мышью" HorizontalAlignment="Left" Margin="38,52,0,0" VerticalAlignment="Top"/>
+        <Button Content="Включить" HorizontalAlignment="Left" Margin="38,91,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click"/>
 
     </Grid>
 </Window>
