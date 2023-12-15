@@ -3,5 +3,7 @@
     public interface IMouse
     {
         void Move();
+
+        void SmartMove();
     }
 }

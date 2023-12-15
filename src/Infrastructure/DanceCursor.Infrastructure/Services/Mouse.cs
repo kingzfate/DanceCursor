@@ -9,7 +9,6 @@ namespace DanceCursor.Infrastructure.Services
     {
         PeriodicTimer timer;
 
-
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         internal static extern bool GetCursorPos(ref Win32Point pt);
@@ -37,8 +36,7 @@ namespace DanceCursor.Infrastructure.Services
             return new Point(w32Mouse.X, w32Mouse.Y);
         }
 
-
-        public void Move() 
+        public void Move()
         {
             timer = new(TimeSpan.FromMilliseconds(5000));
             bool isDown = true;
@@ -57,6 +55,30 @@ namespace DanceCursor.Infrastructure.Services
             }, TimeSpan.FromMilliseconds(5000));
         }
 
+        public void SmartMove()
+        {
+            timer = new(TimeSpan.FromMilliseconds(5000));
+            bool isDown = true;
+            Point previousPoint = GetMousePosition();
+            Point currentPoint;
+            bool isMoved;
+
+            Task statisticsUploader = PeriodicAsync(async () =>
+            {
+                currentPoint = GetMousePosition();
+                if (previousPoint == currentPoint)
+                {
+                    UploadStatisticsAsync(isDown);
+                    isDown = isDown ? false : true;
+                }
+                else
+                {
+                    previousPoint = currentPoint;
+                    currentPoint = GetMousePosition();
+                }
+            }, TimeSpan.FromMinutes(1));
+        }
+
         public async Task PeriodicAsync(Func<Task> action, TimeSpan interval, CancellationToken cancellationToken = default)
 
         {
@@ -73,11 +95,11 @@ namespace DanceCursor.Infrastructure.Services
             Point a = GetMousePosition();
             if (isDown)
             {
-                SetPosition(Convert.ToInt32(a.X - 5), Convert.ToInt32(a.Y - 5));
+                SetPosition(Convert.ToInt32(a.X - 50), Convert.ToInt32(a.Y - 50));
             }
             else
             {
-                SetPosition(Convert.ToInt32(a.X + 5), Convert.ToInt32(a.Y + 5));
+                SetPosition(Convert.ToInt32(a.X + 50), Convert.ToInt32(a.Y + 50));
             }
         }
     }

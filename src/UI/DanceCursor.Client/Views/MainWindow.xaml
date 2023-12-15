@@ -1,7 +1,7 @@
 ﻿<Window 
     Title="DanceCursor"
     WindowStartupLocation="CenterScreen"
-    d:DataContext="{d:DesignInstance vm:MainViewModel}"
+    d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
     mc:Ignorable="d"
     x:Class="DanceCursor.Client.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -15,15 +15,23 @@
     xmlns:vm="clr-namespace:DanceCursor.Client.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="351" Width="451">
     <!--ui:WindowHelper.UseModernWindowStyle="True"-->
-    
+
     <Grid>
-        <RadioButton x:Name="qwe" HorizontalAlignment="Left" Margin="50,185,0,0" VerticalAlignment="Top" Content="Обычное движение" Height="20" Width="129"/>
-        <RadioButton Content="Smart движение" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center" Height="15" Width="109"/>
+        <RadioButton Content="Smart движение" IsChecked="{Binding Path=SmartMode}" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center" Height="15" Width="109"/>
+        <RadioButton Content="Обычное движение" IsChecked="{Binding Path=SimpleMode}" x:Name="qwe" HorizontalAlignment="Left" Margin="50,185,0,0" VerticalAlignment="Top" Height="20" Width="129"/>
         <Button
             Command="{Binding EnableDanceCursor}"
             Content="Включить" 
             HorizontalAlignment="Left" 
             Margin="50,249,0,0" 
+            VerticalAlignment="Top" 
+            Width="92" 
+            Height="20"/>
+        <Button
+            Command="{Binding DisableDanceCursor}"
+            Content="Остановить" 
+            HorizontalAlignment="Center" 
+            Margin="0,249,0,0" 
             VerticalAlignment="Top" 
             Width="92" 
             Height="20"/>
